@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <slider></slider>
+    <slider :sliderList="sliderList"></slider>
   </div>
 </template>
 
@@ -11,6 +11,27 @@ export default {
   name: 'App',
   components: {
     Slider
+  },
+  data() {
+    return {
+    sliderList: [
+      {
+        title: '今日任务'
+      },
+      {
+        title: '待办项目'
+      },
+      {
+        title: '已完成项目'
+      },
+      {
+        title: '专注模式'
+      },
+      {
+        title: '皮肤'
+      },
+    ]
+  }
   }
 }
 </script>

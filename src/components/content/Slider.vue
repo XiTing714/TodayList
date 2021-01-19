@@ -5,33 +5,13 @@
   </div>
   <div class="slider-main">
     <ul>
-      <li>
+      <li v-for="(item, index) in sliderList" :key="(item, index)">
         <div class="li-content">
           <div class="icon">
             <img src="~assets/img/TodayTask.png">
           </div>
           <div class="text">
-            <span>1ag哈哈</span>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="li-content">
-          <div class="icon">
-            <img src="~assets/img/TodayTask.png">
-          </div>
-          <div class="text">
-            <span>1ag哈哈</span>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="li-content">
-          <div class="icon">
-            <img src="~assets/img/TodayTask.png">
-          </div>
-          <div class="text">
-            <span>1ag哈哈</span>
+            <span>{{ item.title }}</span>
           </div>
         </div>
       </li>
@@ -51,6 +31,12 @@ export default {
   data() {
     return {
       isSliderClosed: false
+    }
+  },
+  props: {
+    sliderList: {
+      type: Array,
+      required: true
     }
   },
   methods: {

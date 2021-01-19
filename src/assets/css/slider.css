@@ -1,0 +1,94 @@
+.slider {
+  position: fixed;
+  width: 200px;
+  height: 500px;
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  transition: 1s;
+  background-color: seagreen;
+}
+
+.slider.close {
+  left: -200px;
+}
+
+.slider-info {
+  height: 50px;
+  margin: 0 auto;
+
+  font-size: 24px;
+  line-height: 48px;
+  text-align: center;
+  background-color: papayawhip;
+  
+}
+
+
+.slider-main ul {
+  background-color: seagreen;
+  width: 100%;
+  list-style: none;
+  position: absolute;
+  top: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+.slider-main li {
+  height: 50px;
+  border-top: solid 1px palegreen;
+  padding-left: 15px;
+  transition: 0.3s;
+}
+
+.slider-main li:last-child {
+  border-bottom: solid 1px  palegreen;
+}
+
+.slider-main li:hover {
+  background-color: rgb(70, 170, 113);
+  cursor: pointer;
+}
+
+.slider-main .li-content {
+  position: relative;
+}
+
+.slider-main .icon {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+
+  top: 15px;
+}
+
+.slider-main li img {
+  height: 20px;
+  width: 20px;
+}
+
+.slider-main li .text {
+  position: absolute;
+  font-size: 20px;
+  left: 35px;
+  top: 10px;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  right: -16px;
+  color: aqua;
+  font-size: 20px;
+  transform: translate(0, -50%) rotate(0.5turn);
+  transition: 1s;
+}
+
+.slider.close .slider-btn {
+  transform: translate(0, -50%) rotate(1turn);
+}
+
+.slider-btn:hover {
+  cursor: pointer;
+}

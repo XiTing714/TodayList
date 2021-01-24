@@ -3,9 +3,10 @@
   <div class="slider-info">
     <span>XiTing</span>
   </div>
-  <div class="slider-main">
+  <div class="slider-main"  @click="handleSlideState">
     <ul>
-      <li v-for="(item, index) in sliderList" :key="(item, index)">
+      <li v-for="(item, index) in sliderList" :key="(item, index)"
+          @click="routerChange(item)">
         <div class="li-content">
           <div class="icon">
             <img src="~assets/img/TodayTask.png">
@@ -42,6 +43,10 @@ export default {
   methods: {
     handleSlideState() {
       this.isSliderClosed = !this.isSliderClosed
+    },
+    routerChange(item) {
+      // console.log(item.routeName);
+      this.$router.push(item.routeName)
     }
   }
 

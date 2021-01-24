@@ -1,0 +1,252 @@
+.todoapp {
+  margin-top: 0;
+  width: 550px;
+  margin: 0 auto; 
+
+  
+  /* box-sizing: content-box; */
+}
+
+
+h1{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 550px;
+
+  font-size: 60px;
+  font-weight: 200;
+  
+
+  
+  z-index: 9;
+  text-align: center;
+  color: white;
+  border: solid 1px;
+  background-color: #00796B ;
+}
+
+.addtodo {
+  border: 1px solid #999;
+
+  width: 472px;
+  height: 30px;
+  font-size: 24px;
+
+  padding: 16px 16px 16px 60px;
+}
+
+/* .newtodo {
+  border: 1px solid #999;
+  height: 30px;
+  width: 550px;
+  font-size: 24px;
+} */
+
+:focus {
+  outline: 0ch;
+}
+
+.main {
+  position: relative;
+}
+
+.all-toggle {
+  position: absolute;
+  top: -44px;
+  left: 15px;
+
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.all-toggle img {
+  width: 28px;
+  height: 28px;
+  opacity: 0.2;
+  transition: opacity 0.2s ease-out;
+}
+
+.alltoggled img {
+  opacity: 0.5;
+}
+
+.all-toggle img:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.todo-list {
+  margin: 0;
+  background-color: white;
+}
+
+.todo-list li {
+  position: relative;
+}
+
+.todo-list li {
+  list-style: none;
+  margin-left: -40px;
+  width: 516px;
+  height: 30px;
+  font-size: 24px;
+  color: rgb(54, 53, 53);
+  padding: 16px;
+
+  border: solid 1px #999;
+  border-top: none;
+}
+
+.li-content {
+  position: relative;
+}
+
+.toggle {
+  position: absolute;
+  top: 5px;
+  left: 0px;
+
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: rgb(196, 191, 191);
+  transition: background-color 0.2s ease-out;
+}
+
+.toggle img {
+  width: 26px;
+  height: 26px;
+}
+
+.toggle:hover {
+  background-color: #009688;
+  cursor: pointer;
+}
+
+.li-content .checked {
+  background-color: #FF6666;
+}
+
+.li-content .title {
+  color: #cdcdcd;
+	text-decoration: line-through;
+}
+
+
+.label {
+  position: absolute;
+  top: 6px;
+  left: 50px;
+  line-height: 25px;
+}
+
+.delete-button {
+  position: absolute;
+  top: 2px;
+  right: 0px;
+}
+
+.delete {
+  font-size: 28px;
+  border: none;
+  background-color: white;
+  color: #999;
+  transition: color 0.2s ease-out;
+  display: none;
+}
+
+.delete:after {
+  content: '×';
+}
+
+.todo-list li:hover .delete {
+  display: block;
+}
+
+.delete:hover{
+  color: #b83f45;
+}
+
+.edit {
+  position: absolute;
+  top: -1px;
+  left: 50px;
+
+  font-size: 24px;
+  width: 456px;
+  height: 62px;
+  padding: 0 20px;
+  border: solid 1px;
+  border-bottom: none;
+
+  display: none;
+}
+
+.edit:last-child {
+  border: solid 1px;
+}
+
+.editing .edit {
+  display: block;
+}
+
+.editing .li-content {
+  display: none;
+}
+
+footer {
+  position: relative;
+
+  height: 45px;
+  border: solid 1px #999;
+  border-top: none;
+  background-color: white;
+}
+
+/* .selector {
+  position: absolute;
+  top: 11px;
+  right: 150px;
+  width: 250px;
+
+  display: flex;
+  justify-content: space-around;
+} */
+
+/* .selector a {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+} */
+
+/* .all, .active, .completed {
+  padding: 1px 6px;
+} */
+
+/* .all:hover, .active:hover, .completed:hover {
+  cursor: pointer;
+} */
+
+/* .allselected, .activeselected, .completedselected {
+  font-weight: 570;
+  background-color: #009688;
+  border: solid 1px #00796B;
+  border-radius: 4px;
+} */
+
+/* .allselected a, .activeselected a, .completedselected a {
+  color: white;
+} */
+
+
+#clear {
+  position: absolute;
+  top: 11px;
+  right: 15px;
+
+  cursor: pointer;
+
+  border: solid 1px #B2DFDB;
+  border-radius: 4px;
+}

@@ -1,43 +1,45 @@
 <template>
   <div id="app">
     <slider :sliderList="sliderList"></slider>
+    <router-view></router-view>
+    <!-- <today-task></today-task> -->
   </div>
 </template>
 
 <script>
-import Slider from './components/content/Slider'
+import Slider from 'components/content/Slider'
+/* import TodayTask from '../src/views/TodayTask' */
 
 export default {
   name: 'App',
   components: {
-    Slider
+    Slider,
   },
   data() {
     return {
-    sliderList: [
-      {
-        title: '今日任务'
-      },
-      {
-        title: '待办项目'
-      },
-      {
-        title: '已完成项目'
-      },
-      {
-        title: '专注模式'
-      },
-      {
-        title: '皮肤'
-      },
-    ]
-  }
+      sliderList: [
+        {
+          title: '今日任务',
+          routeName: '/todaytask'
+        },
+        {
+          title: '专注模式'
+        },
+        {
+          title: '皮肤'
+        },
+      ]
+    }
+  },
+  methods: {
+    
   }
 }
 </script>
 
 <style>
 @import "assets/css/slider.css";
+@import "assets/css/TodayTask.css";
 
 body {
   margin: 0;
@@ -51,6 +53,7 @@ body {
   margin: 0;
   width: 100vw;
   height: 100vh;
+  overflow: scroll;
   background-color: #29292D;
 }
 

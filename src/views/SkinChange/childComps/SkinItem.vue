@@ -33,7 +33,7 @@ export default {
 .skin-item {
   width: 150px;
   height: 150px;
-  border: solid 2px transparent;
+  border: solid 2px white;
   margin: 4px;
 }
 

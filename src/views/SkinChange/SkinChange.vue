@@ -17,7 +17,13 @@ export default {
   name: 'SkinChange',
   data() {
     return {
-      skinColor: ["green", "red", "blue", "yellow", "purple", "white"]
+      skinColor: [
+        "#c02c38", 
+        "#681752", 
+        "#144a74", 
+        "#253d24", 
+        "#ff9900", 
+        "#fc6315"]
     }
   },
   components: {

@@ -22,7 +22,8 @@ h1{
   text-align: center;
   color: white;
   border: solid 1px;
-  background-color: #00796B ;
+  /* background-color: #00796B ; */
+  background-color: rgb(37, 61, 36) ;
 }
 
 .addtodo {

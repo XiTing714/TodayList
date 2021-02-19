@@ -1,7 +1,8 @@
 <template>
-<div class="slider" :class="{close: isSliderClosed}">
+<div class="slider" :class="{open: isSliderClosed}">
   <div class="slider-info">
-    <span>XiTing</span>
+    <div class="user-name">UserName</div>
+    <span class="user-email">useremail@gmail.com</span>
   </div>
   <div class="slider-main">
     <ul>
@@ -9,7 +10,7 @@
           @click="routerChange(item)">
         <div class="li-content">
           <div class="icon">
-            <img src="~assets/img/TodayTask.png">
+            <img src="~assets/img/Slider/TodayTask.png">
           </div>
           <div class="text">
             <span>{{ item.title }}</span>
@@ -19,7 +20,8 @@
     </ul>
   </div>
   <div class="slider-btn" @click="handleSlideState">
-    <span>></span>
+    <!-- <span>></span> -->
+    <img src="~assets/img/menu.png">
   </div>
 </div>
 

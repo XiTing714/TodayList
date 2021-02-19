@@ -2,7 +2,7 @@
   <div>
     <section class="todoapp">
       <header>
-        <h1>待办清单</h1>
+        <h1 :style="{backgroundColor:$store.state.appBgColor}">待办清单</h1>
         <input class="addtodo" type="text" placeholder="请输入任务" 
                @keydown.enter="handleAdd"
                v-focus>

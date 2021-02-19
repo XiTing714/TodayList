@@ -52,8 +52,8 @@ export default {
 
 .selected {
   font-weight: 570;
-  background-color: #009688;
-  border: solid 1px #00796B;
+  background-color: rgb(116, 117, 155);
+  border: solid 1px rgb(167, 168, 189);
   border-radius: 4px;
 }
 

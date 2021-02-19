@@ -3,7 +3,7 @@
   <div class="slider-info">
     <span>XiTing</span>
   </div>
-  <div class="slider-main"  @click="handleSlideState">
+  <div class="slider-main">
     <ul>
       <li v-for="(item, index) in sliderList" :key="(item, index)"
           @click="routerChange(item)">

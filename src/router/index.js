@@ -13,6 +13,9 @@ const AllTask = () => import('views/TodayTask/childComps/AllTask.vue')
 const ActiveTask = () => import('views/TodayTask/childComps/ActiveTask.vue')
 const DoneTask = () => import('views/TodayTask/childComps/DoneTask.vue')
 
+const FocusMode = () => import('views/FocusMode/FocusMode.vue')
+const SkinChange = () => import('views/SkinChange/SkinChange.vue')
+
 const routes = [
   {
     path: '',
@@ -41,6 +44,14 @@ const routes = [
         component: DoneTask
       }
     ]
+  },
+  {
+    path: '/FocusMode',
+    component: FocusMode
+  },
+  {
+    path: '/SkinChange',
+    component: SkinChange
   }
 ]
 

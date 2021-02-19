@@ -1,4 +1,10 @@
 export default {
+  changeSkin(state, skinColor) {
+    /* console.log(skinColor); */
+    state.appBgColor = skinColor
+    window.localStorage.setItem('appBgColor', JSON.stringify(state.appBgColor))
+  },
+
   // 增加项目并存储于本地
   increTask(state, addText) {
     if(addText.length) {

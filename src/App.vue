@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :style="{backgroundColor:$store.state.appBgColor}">
     <slider :sliderList="sliderList"></slider>
     <router-view></router-view>
     <!-- <today-task></today-task> -->
@@ -23,10 +23,12 @@ export default {
           routeName: '/todaytask'
         },
         {
-          title: '专注模式'
+          title: '加油站',
+          routeName: '/FocusMode'
         },
         {
-          title: '皮肤'
+          title: '皮肤',
+          routeName: '/SkinChange'
         },
       ]
     }
@@ -54,7 +56,7 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: scroll;
-  background-color: #29292D;
+  background-color: #9b9bda;
 }
 
 /* @import 'assets/css/slider.css' */

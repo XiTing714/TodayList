@@ -1,8 +1,7 @@
 <template>
   <div id="app" :style="{backgroundColor:$store.state.appBgColor}">
-    <slider :sliderList="sliderList"></slider>
+    <slider></slider>
     <router-view></router-view>
-    <!-- <today-task></today-task> -->
   </div>
 </template>
 
@@ -17,20 +16,7 @@ export default {
   },
   data() {
     return {
-      sliderList: [
-        {
-          title: '今日任务',
-          routeName: '/todaytask'
-        },
-        {
-          title: '加油站',
-          routeName: '/FocusMode'
-        },
-        {
-          title: '皮肤',
-          routeName: '/SkinChange'
-        },
-      ]
+      
     }
   },
   methods: {
@@ -40,7 +26,6 @@ export default {
 </script>
 
 <style>
-@import "assets/css/slider.css";
 @import "assets/css/TodayTask.css";
 
 body {

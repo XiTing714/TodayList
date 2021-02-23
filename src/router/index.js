@@ -46,11 +46,11 @@ const routes = [
     ]
   },
   {
-    path: '/FocusMode',
+    path: '/inspire',
     component: FocusMode
   },
   {
-    path: '/SkinChange',
+    path: '/skin',
     component: SkinChange
   }
 ]

@@ -1,5 +1,5 @@
 <template>
-  <section class="main">
+  <div class="main">
     <div class="all-toggle" 
         :class="{alltoggled: isAllToggled}"
         @click="handleToglleAll">
@@ -28,7 +28,7 @@
               @keydown.esc="cancelEdit">
       </li>
     </ul>
-  </section>
+  </div>
 </template>
 
 <script>

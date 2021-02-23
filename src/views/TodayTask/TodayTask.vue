@@ -1,23 +1,21 @@
 <template>
-  <div>
-    <section class="todoapp">
-      <header>
-        <h1 :style="{backgroundColor:$store.state.appBgColor}">今日清单</h1>
-        <input class="addtodo" type="text" placeholder="请输入任务" 
-               @keydown.enter="handleAdd"
-               v-focus>
-      </header>
-      <template v-if="todos.length">
-        <router-view></router-view>
-      </template>
-      <footer>
-        <main-tab-bar></main-tab-bar>
-        <button id="clear" 
-        @click="clearAllCompleted"
-        v-show="filterTodos.filter(item => item.completed).length">清除已完成</button>
-      </footer>
-    </section>
-  </div>
+  <article class="todoapp">
+    <header>
+      <h1 :style="{backgroundColor:$store.state.appBgColor}">今日清单</h1>
+      <input class="addtodo" type="text" placeholder="请输入任务" 
+              @keydown.enter="handleAdd"
+              v-focus>
+    </header>
+    <template v-if="todos.length">
+      <router-view></router-view>
+    </template>
+    <div>
+      <main-tab-bar></main-tab-bar>
+      <button id="clear" 
+      @click="clearAllCompleted"
+      v-show="filterTodos.filter(item => item.completed).length">清除已完成</button>
+    </div>
+  </article>
 </template>
 
 <script>

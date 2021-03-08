@@ -9,7 +9,7 @@
 export default {
   name:'TabBarItem',
   props: {
-    filterText: {
+    cfilterText: {
       type: String,
       required: true
     }
@@ -23,12 +23,12 @@ export default {
     isSelected() {
       // 判断当前活跃路径route字符串是否包含该组件属性link字符串
       // 包含，则不等于-1成立、返回true；否则表示等于-1、返回false
-      return this.$route.path.indexOf(this.link) != -1
+      return this.$store.state.filterText === this.cfilterText
     }
   },
   methods: {
     itemClick() {
-      this.$store.commit('changeFilterText', this.filterText)
+      this.$store.commit('changeFilterText', this.cfilterText)
     }
   }
 

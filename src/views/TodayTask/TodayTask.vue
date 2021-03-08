@@ -110,19 +110,19 @@ export default {
     },
     // 全选
     handleToglleAll() {
-      if(this.todos.some(item => !item.completed)) {
-        this.todos.forEach(item => {
+      if(this.filterTask.some(item => !item.completed)) {
+        this.filterTask.forEach(item => {
           item.completed = true
         })
       } else {
-        this.todos.forEach(item => {
+        this.filterTask.forEach(item => {
           item.completed = false
         })
       }
     },
     // 完成勾选单个任务
     itemCompleted(index) {
-      this.todos[index].completed = !this.todos[index].completed
+      this.filterTask[index].completed = !this.filterTask[index].completed
     },
     // 进入编辑状态
     getEdit(index) {
@@ -132,21 +132,21 @@ export default {
     saveEdit(index, e) {
       let editText = e.target.value.trim()
       if(editText) {
-        this.todos[index].title = editText
+        this.filterTask[index].title = editText
       } else {
-        this.todos.splice(index, 1)
+        this.filterTask.splice(index, 1)
       }
     },
      // 删除单个任务
     handleDelete(index) {
-      this.todos.splice(index, 1)
+      this.filterTask.splice(index, 1)
     },
     // 删除所有已完成项目
     clearAllCompleted() {
       let length = this.todos.length
       for(let i = 0; i < length; i++) {
-        if(this.todos[i].completed) {
-          this.todos.splice(i, 1)
+        if(this.filterTask[i].completed) {
+          this.filterTask.splice(i, 1)
         }
       }
     },

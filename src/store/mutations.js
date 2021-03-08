@@ -5,7 +5,7 @@ export default {
     window.localStorage.setItem('appBgColor', JSON.stringify(state.appBgColor))
   },
 
-  changeFilterText(state, filterText) {
-    state.filterText = filterText
+  changeFilterText(state, cfilterText) {
+    state.filterText = cfilterText
   },
 }

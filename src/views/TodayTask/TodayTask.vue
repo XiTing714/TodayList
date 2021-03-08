@@ -7,13 +7,42 @@
               v-focus>
     </header>
     <template v-if="todos.length">
-      <router-view></router-view>
+      <div class="main">
+        <div class="all-toggle" 
+            :class="{alltoggled: isAllToggled}"
+            @click="handleToglleAll">
+          <img src="~assets/img/alltoggle.png">
+        </div>
+        <ul class="todo-list">
+          <li v-for="(item, index) in filterTask" :key="(item, index)" 
+              :class="{editing: editIndex === index}"
+              >
+            <div class="li-content">
+              <div class="toggle" :class="{checked: item.completed}" @click="itemCompleted(index)">
+                <img src="~assets/img/toggle.png">
+              </div>
+              <div class="label" :class="{title: item.completed}">
+                <label @dblclick="getEdit(index)">{{ item.title }}</label>
+              </div>
+              <div class="delete-button">
+                <button class="delete" @click="handleDelete(index)"></button>
+              </div>
+            </div>
+        <input class="edit"
+              v-edit-focus="editIndex === index"
+              :value="item.title" 
+              @keydown.enter="saveEdit(index, $event)"
+              @blur="saveEdit(index, $event)"
+              @keydown.esc="cancelEdit">
+      </li>
+    </ul>
+      </div>
     </template>
-    <div>
-      <main-tab-bar></main-tab-bar>
+    <div class="footer">
+      <main-tab-bar :todos="todos"></main-tab-bar>
       <button id="clear" 
       @click="clearAllCompleted"
-      v-show="filterTodos.filter(item => item.completed).length">清除已完成</button>
+      v-show="this.filterTask.some(item => item.completed)">清除已完成</button>
     </div>
   </article>
 </template>
@@ -43,27 +72,18 @@ export default {
   },
   data() {
     return {
-      todos: this.$store.state.todos,
-      filterText: 'all'
+      todos: JSON.parse(window.localStorage.getItem('todos')) || '' ,
+      editIndex: null
     }
   },
-  /* created() {
-    console.log(this.todos);
-  }, */
-  /* watch: {
-    todos: {
-      handler(val) {
-        // console.log(val);
-        window.localStorage.setItem('todos', JSON.stringify(val))
-      },
-      deep: true
-    }
-  }, */
   computed: {
-    /* isAllToggled() {
+    isAllToggled() {
       return this.todos.every(item => item.completed == true)
-    }, */
-    filterTodos() {
+    },
+    filterText() {
+      return this.$store.state.filterText
+    },
+    filterTask() {
       if(this.filterText === 'active') {
         return this.todos.filter(item => !item.completed)
       } else if(this.filterText === 'done') {
@@ -71,49 +91,73 @@ export default {
       } else {
         return this.todos
       }
-      /* switch(this.filterText) {
-        case 'active':
-          return this.todos.filter(item => !item.completed)
-          break;
-        case 'done':
-          return this.todos.filter(item => item.completed)
-          break;
-        default: 
-          return this.todos
-          break
-      } */
     }
   },
   methods: {
-    // 改变路由
-    /* routerChangeAll() {
-      this.$router.push('/todaytask/all')
-    }, */
-    /* routerChangeActive() {
-      this.$router.push('/todaytask/active')
-    },
-    routerChangeDone() {
-      this.$router.push('/todaytask/done')
-    }, */
     // 添加项目
     handleAdd(e) {
       /* console.log(e.target.value); */
       const value = e.target.value
       const addText = value.trim()
-      this.$store.commit('increTask', addText)
+      if(addText.length) {
+        this.todos.push({
+          id: this.todos.length ? this.todos.length + 1 : 1,
+          title: addText,
+          completed: false
+      })
       e.target.value = ''
+      }
+    },
+    // 全选
+    handleToglleAll() {
+      if(this.todos.some(item => !item.completed)) {
+        this.todos.forEach(item => {
+          item.completed = true
+        })
+      } else {
+        this.todos.forEach(item => {
+          item.completed = false
+        })
+      }
+    },
+    // 完成勾选单个任务
+    itemCompleted(index) {
+      this.todos[index].completed = !this.todos[index].completed
+    },
+    // 进入编辑状态
+    getEdit(index) {
+      this.editIndex = index
+    },
+    // 保存编辑状态
+    saveEdit(index, e) {
+      let editText = e.target.value.trim()
+      if(editText) {
+        this.todos[index].title = editText
+      } else {
+        this.todos.splice(index, 1)
+      }
+    },
+     // 删除单个任务
+    handleDelete(index) {
+      this.todos.splice(index, 1)
     },
     // 删除所有已完成项目
     clearAllCompleted() {
-      let length = this.$store.state.todos.length
+      let length = this.todos.length
       for(let i = 0; i < length; i++) {
-        if(this.$store.state.todos[i].completed) {
-          this.$store.state.todos.splice(i, 1)
-          i--
+        if(this.todos[i].completed) {
+          this.todos.splice(i, 1)
         }
       }
     },
   },
+  watch: {
+    todos: {
+      handler(val) {
+        window.localStorage.setItem('todos', JSON.stringify(val))
+      }
+    }
+  }
 }
 
 </script>

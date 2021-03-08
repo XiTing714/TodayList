@@ -196,7 +196,7 @@ h1{
   display: none;
 }
 
-footer {
+.footer {
   position: relative;
 
   height: 45px;

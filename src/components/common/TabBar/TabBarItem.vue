@@ -9,7 +9,7 @@
 export default {
   name:'TabBarItem',
   props: {
-    link: {
+    filterText: {
       type: String,
       required: true
     }
@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     itemClick() {
-      this.$router.replace(this.link)
+      this.$store.commit('changeFilterText', this.filterText)
     }
   }
 

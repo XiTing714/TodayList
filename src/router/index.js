@@ -9,9 +9,6 @@ const originalPush = Router.prototype.push
 }
 
 const TodayTask = () => import('views/TodayTask/TodayTask.vue')
-const AllTask = () => import('views/TodayTask/childComps/AllTask.vue')
-const ActiveTask = () => import('views/TodayTask/childComps/ActiveTask.vue')
-const DoneTask = () => import('views/TodayTask/childComps/DoneTask.vue')
 
 const FocusMode = () => import('views/FocusMode/FocusMode.vue')
 const SkinChange = () => import('views/SkinChange/SkinChange.vue')
@@ -25,25 +22,6 @@ const routes = [
   {
     path: '/todaytask',
     component: TodayTask,
-    children: [
-      {
-        path: '',
-        redirect: 'all'
-      }
-      ,
-      {
-        path: 'all',
-        component: AllTask
-      },
-      {
-        path: 'active',
-        component: ActiveTask
-      },
-      {
-        path: 'done',
-        component: DoneTask
-      }
-    ]
   },
   {
     path: '/inspire',

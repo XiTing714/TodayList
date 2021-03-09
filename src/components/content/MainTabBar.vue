@@ -2,15 +2,15 @@
   <tab-bar>
     <tab-bar-item cfilterText="all">
       <span slot="itemName">全部</span>
-      <span slot="countNum">({{ this.todos.length }})</span>
+      <span slot="countNum">({{ todos.length }})</span>
     </tab-bar-item>
     <tab-bar-item cfilterText="active">
       <span slot="itemName">待办</span>
-      <span slot="countNum">({{ this.todos.filter((item) => !item.completed).length }})</span>
+      <span slot="countNum">({{ todos.filter((item) => !item.completed).length }})</span>
     </tab-bar-item>
     <tab-bar-item cfilterText="done">
       <span slot="itemName">已完成</span>
-      <span slot="countNum">({{ this.todos.filter((item) => item.completed).length }})</span>
+      <span slot="countNum">({{ todos.filter((item) => item.completed).length }})</span>
     </tab-bar-item>
   </tab-bar>
 </template>

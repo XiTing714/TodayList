@@ -42,7 +42,7 @@
       <main-tab-bar :todos="todos"></main-tab-bar>
       <button id="clear" 
       @click="clearAllCompleted"
-      v-show="this.filterTask.some(item => item.completed)">清除已完成</button>
+      v-show="filterTask.some(item => item.completed)">清除已完成</button>
     </div>
   </article>
 </template>
@@ -72,7 +72,7 @@ export default {
   },
   data() {
     return {
-      todos: JSON.parse(window.localStorage.getItem('todos')) || '' ,
+      todos: JSON.parse(window.localStorage.getItem('todos') || '[]')  ,
       editIndex: null
     }
   },

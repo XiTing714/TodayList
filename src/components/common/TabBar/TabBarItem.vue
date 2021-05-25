@@ -1,7 +1,9 @@
 <template>
-  <div class="tab-bar-item" :class="{selected:isSelected}" @click="itemClick">
-    <slot name="itemName"><span>itemName</span></slot>
-    <slot name="countNum"><span>countNum</span></slot>
+  <div class="tab-bar-item" :class="{selected:isSelected}">
+    <div @click="itemClick">
+      <slot name="itemName"><span>itemName</span></slot>
+      <slot name="countNum"><span>countNum</span></slot>
+    </div>
   </div>
 </template>
 
@@ -21,14 +23,12 @@ export default {
   },
   computed: {
     isSelected() {
-      // 判断当前活跃路径route字符串是否包含该组件属性link字符串
-      // 包含，则不等于-1成立、返回true；否则表示等于-1、返回false
       return this.$store.state.filterText === this.cfilterText
     }
   },
   methods: {
     itemClick() {
-      this.$store.commit('changeFilterText', this.cfilterText)
+      this.$emit('itemclick', this.cfilterText)
     }
   }
 

@@ -73,7 +73,8 @@ export default {
   data() {
     return {
       todos: JSON.parse(window.localStorage.getItem('todos') || '[]')  ,
-      editIndex: null
+      editIndex: null,
+      cfilterText: null
     }
   },
   computed: {

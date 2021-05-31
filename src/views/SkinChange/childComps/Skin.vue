@@ -15,7 +15,13 @@ export default {
 .skin {
   display: flex;
   flex-wrap: wrap;
-  width: 500px;
-  
+  width: 486px;
 }
+
+@media (max-width: 500px) {
+  .skin {
+    width: 324px;
+  }
+}
+
 </style>

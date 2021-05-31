@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <skin class="skin">
       <skin-item v-for="(item, index) in skinColor" 
       :key="(item, index)"
@@ -39,30 +39,18 @@ export default {
 </script>
 
 <style scoped>
-.skin {
-  margin: 100px auto;
-}
-
-/* .img {
-  margin-top: -150px;
-  border: solid 1px;
+.main {
+  width: 100%;
+  height: 100%;
   position: relative;
 }
 
-#flo1 {
-  width: 300px;
-  height: 300px;
+.skin {
   position: absolute;
-  top: -150px;
-
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-#flo2 {
-  width: 200px;
-  height: 200px;
-  position: absolute;
-  left: 450px;
-}
- */
 
 </style>

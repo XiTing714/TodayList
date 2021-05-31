@@ -48,36 +48,44 @@ export default {
 }
 
 </script>
-<style scoped>
+<style scoped lang="scss">
 * {
   margin: 0;
   padding: 0;
 }
 
+$width: 1000px;
+$height: 550px;
+@mixin area($width, $height) {
+  width: $width;
+  height: $height
+};
+%img {
+  @include area($width, $height)
+}
+
+
 .main {
-  width: 100%;
-  height: 100%;
+  @include area(100%, 100%);
   position: relative;
-}
-
-
-.block {
-  width: 1000px;
-  height: 550px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%)
-}
-
-.el-carousel {
-  width: 1000px;
-  height: 550px;
-}
-
-.el-carousel__item img {
-  width: 1000px;
-  height: 550px;
+  .block {
+    width: $width;
+    height: $height;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .el-carousel {
+      width: 1000px;
+      height: 550px;
+      .el-carousel__item {
+        & img {
+          @extend %img
+        }
+      }
+    }
   }
+}
+
 
 </style>

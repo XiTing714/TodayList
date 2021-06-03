@@ -6,7 +6,7 @@ import mutations from './mutations'
 Vue.use(Vuex)
 
 const state = {
-  appBgColor: JSON.parse(window.localStorage.getItem('appBgColor')) || '#ff9900',
+  appBgColor: JSON.parse(window.localStorage.getItem('appBgColor')) || 'green',
   filterText: 'all'
 }
 

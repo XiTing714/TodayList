@@ -6,7 +6,7 @@
               @keydown.enter="handleAdd"
               v-focus>
     </header>
-    <template v-if="todos.length">
+    <template v-if="this.$store.state.allList.length">
       <div class="main">
         <div class="all-toggle" 
             :class="{alltoggled: isAllToggled}"
@@ -28,18 +28,18 @@
                 <button class="delete" @click="handleDelete(index)"></button>
               </div>
             </div>
-        <input class="edit"
-              v-edit-focus="editIndex === index"
-              :value="item.title" 
-              @keydown.enter="saveEdit(index, $event)"
-              @blur="saveEdit(index, $event)"
-              @keydown.esc="cancelEdit">
-      </li>
-    </ul>
+            <input class="edit"
+                  v-edit-focus="editIndex === index"
+                  :value="item.title" 
+                  @keydown.enter="saveEdit(index, $event)"
+                  @blur="saveEdit(index, $event)"
+                  @keydown.esc="cancelEdit">
+          </li>
+        </ul>
       </div>
     </template>
     <div class="footer">
-      <main-tab-bar :todos="todos"></main-tab-bar>
+      <main-tab-bar></main-tab-bar>
       <button id="clear" 
       @click="clearAllCompleted"
       v-show="filterTask.some(item => item.completed)">清除已完成</button>
@@ -72,25 +72,26 @@ export default {
   },
   data() {
     return {
-      todos: JSON.parse(window.localStorage.getItem('todos') || '[]')  ,
       editIndex: null,
       cfilterText: null
     }
   },
   computed: {
     isAllToggled() {
-      return this.todos.every(item => item.completed == true)
+      if (this.filterText === 'done') {
+        return true
+      } else {
+        return false
+      }
     },
     filterText() {
       return this.$store.state.filterText
     },
     filterTask() {
-      if(this.filterText === 'active') {
-        return this.todos.filter(item => !item.completed)
-      } else if(this.filterText === 'done') {
-        return this.todos.filter(item => item.completed)
+      if (this.filterText === 'done') {
+        return this.$store.getters.doneList
       } else {
-        return this.todos
+        return this.$store.getters.activeList
       }
     }
   },
@@ -101,29 +102,24 @@ export default {
       const value = e.target.value
       const addText = value.trim()
       if(addText.length) {
-        this.todos.push({
-          id: this.todos.length ? this.todos.length + 1 : 1,
-          title: addText,
-          completed: false
-      })
-      e.target.value = ''
+        this.$store.commit('handleAdd', addText)
+        e.target.value = ''
       }
     },
     // 全选
     handleToglleAll() {
-      if(this.filterTask.some(item => !item.completed)) {
-        this.filterTask.forEach(item => {
-          item.completed = true
-        })
+      if(this.filterTask.every(item => !item.completed)) {
+        // 表示此时显示的是未完成的activeList
+        this.$store.commit('handleToglleActive')
       } else {
-        this.filterTask.forEach(item => {
-          item.completed = false
-        })
+        // 表示此时显示的是未完成的activeList
+        this.$store.commit('handleToglleDone')
       }
     },
     // 完成勾选单个任务
     itemCompleted(index) {
-      this.filterTask[index].completed = !this.filterTask[index].completed
+      const id = this.filterTask[index].id
+      this.$store.commit('itemCompleted', id)
     },
     // 进入编辑状态
     getEdit(index) {
@@ -131,33 +127,43 @@ export default {
     },
     // 保存编辑状态
     saveEdit(index, e) {
-      let editText = e.target.value.trim()
+      const editText = e.target.value.trim()
+      const id = this.filterTask[index].id
       if(editText) {
-        this.filterTask[index].title = editText
+        //保存编辑内容, 传递修改内容和id
+        this.$store.commit({
+          type: 'saveEdit',
+          editText,
+          id
+        })
+        this.editIndex = null
       } else {
-        this.filterTask.splice(index, 1)
+        //删除此项
+        this.$store.commit('handleDelete', id)
+        this.editIndex = null
       }
     },
      // 删除单个任务
     handleDelete(index) {
-      this.filterTask.splice(index, 1)
+      const id = this.filterTask[index].id
+      this.$store.commit('handleDelete', id)
     },
     // 删除所有已完成项目
     clearAllCompleted() {
-      let length = this.todos.length
-      for(let i = 0; i < length; i++) {
-        if(this.filterTask[i].completed) {
-          this.filterTask.splice(i, 1)
-        }
+      if(this.filterTask.every(item => item.completed)) {
+        this.$store.commit('clearAllCompleted')
       }
     },
+    cancelEdit() {
+      this.editIndex = null
+    }
   },
   watch: {
-    todos: {
+    /* todos: {
       handler(val) {
         window.localStorage.setItem('todos', JSON.stringify(val))
       }
-    }
+    } */
   }
 }
 

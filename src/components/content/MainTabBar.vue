@@ -1,16 +1,12 @@
 <template>
   <tab-bar>
     <tab-bar-item cfilterText="all" @itemclick="testclick">
-      <span slot="itemName">全部</span>
-      <span slot="countNum">({{ todos.length }})</span>
-    </tab-bar-item>
-    <tab-bar-item cfilterText="active" @itemclick="testclick">
-      <span slot="itemName">待办</span>
-      <span slot="countNum">({{ todos.filter((item) => !item.completed).length }})</span>
+      <span slot="itemName">未完成</span>
+      <span slot="countNum">({{ this.$store.getters.activeList.length }})</span>
     </tab-bar-item>
     <tab-bar-item cfilterText="done" @itemclick="testclick">
       <span slot="itemName">已完成</span>
-      <span slot="countNum">({{ todos.filter((item) => item.completed).length }})</span>
+      <span slot="countNum">({{ this.$store.getters.doneList.length }})</span>
     </tab-bar-item>
   </tab-bar>
 </template>
@@ -25,12 +21,6 @@ export default {
   components: {
     TabBar,
     TabBarItem,
-  },
-  props: {
-    todos: {
-      type: Array,
-      required: true
-    }
   },
   methods: {
     testclick(cfilterText) {

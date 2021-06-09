@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="block">
-      <el-carousel trigger="click" height="550px">
+      <el-carousel trigger="click" height="calc(100% - 26px)">
         <el-carousel-item>
           <img src="~assets/img/Carousel/1.jpg">
         </el-carousel-item>
@@ -66,21 +66,27 @@ $height: 550px;
 
 
 .main {
-  @include area(100%, 100%);
+  width: 100%;
+  height: 100%;
   position: relative;
   .block {
-    width: $width;
-    height: $height;
+    width: 82vw;
+    height: 82vh;
+    min-width: 766px;
+    min-height: 500px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     .el-carousel {
-      width: 1000px;
-      height: 550px;
+      width: 82vw;
+      height: 82vh;
+      min-width: 766px;
+      min-height: 500px;
       .el-carousel__item {
         & img {
-          @extend %img
+          width: 100%;
+          height: 100%;
         }
       }
     }

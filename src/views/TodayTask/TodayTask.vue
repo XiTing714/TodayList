@@ -1,5 +1,5 @@
 <template>
-  <article class="todoapp">
+  <section class="todoapp">
     <header>
       <h1 :style="{backgroundColor:$store.state.appBgColor}">今日清单</h1>
       <input class="addtodo" type="text" placeholder="请输入任务" 
@@ -44,7 +44,7 @@
       @click="clearAllCompleted"
       v-show="filterTask.some(item => item.completed)">清除已完成</button>
     </div>
-  </article>
+  </section>
 </template>
 
 <script>
